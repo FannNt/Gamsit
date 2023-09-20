@@ -1,49 +1,41 @@
 import random
 
 player = ["G","M","S"]
-computer1 = ["G","M","S"]
+computer = ["G","M","S"]
 
 def com1():
-    mCom = random.choice(player)
+    Com = random.choice(player)
 
-    if mCom in player:
-        player.remove(mCom)
-        print(f"Computer memilih {mCom}")
+    if Com in player:
+        player.remove(Com)
+        print(f"Computer memilih {Com}")
         print(f"Sisa jari anda {player}")
-        print(f"Sisa jari Computer {computer1}")
+        print(f"Sisa jari Computer {computer}")
     
 
-def p1():
-    print(computer1)
+def match():
+    print("-----------------------")
+    print(computer)
     match1 = input("Pilih apa yang akan ada hilangkan!: ").upper()
-    if match1 in computer1:
-        computer1.remove(match1)
+    if match1 in computer:
+        computer.remove(match1)
         com1()
     else:
         print("Masukkan dengan benar")
-        p1()
-def p2():
-    print(" ")
-    print(computer1)
-    match2 = input("Pilih apa yang akan ada hilangkan!: ").upper()
-    if match2 in computer1:
-        computer1.remove(match2)
-        com1()
+        match()
+
+def nilai():
+    if (player == ["S"] and computer == ["G"]) or (player == ["G"] and computer == ["M"]) or (player == ["M"] and computer == ["S"]):
+        print(f"\nComputer = {computer}\nPlayer = {player}\nKamu menang")
+    elif player == computer:
+        print(f"\nComputer = {computer}\nPlayer = {player}\nSeri")
     else:
-        print("Masukkan dengan benar")
-        p2()
-def mk():
-    if (player == ["S"] and computer1 == ["G"]) or (player == ["G"] and computer1 == ["M"]) or (player == ["M"] and computer1 == ["S"]):
-        print(f"\nKamu menang \nComputer = {computer1}\nPlayer = {player}")
-    elif player == computer1:
-        print(f"\nSeri \nComputer = {computer1}\nPlayer = {player}")
-    else:
-        print(f"\nNT\nComputer = {computer1}\nPlayer = {player}")
+        print(f"\nComputer = {computer}\nPlayer = {player}\nNT")
 
 def play():
-    p1()
-    p2()
-    mk()
+    match()
+    match()
+    nilai()
 
 play()
 
@@ -51,7 +43,7 @@ while True:
     loop = input("Apakah mau lanjut ? y/n : ").upper()
     if loop == "Y":
         player = ["G","M","S"]
-        computer1 = ["G","M","S"]
+        computer = ["G","M","S"]
         play()
     elif loop == "N":
         break
